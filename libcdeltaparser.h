@@ -1,5 +1,5 @@
 //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//
-// c-deltaparser-lib, copyright (c) 2021 houz                                                                   //
+// libcdeltaparser, copyright (c) 2021 houz                                                                   //
 // A parser-library for Growtopia's items.dat, written fully in C & embeddable in C/C++ code.                   //                                                                                    //
 // For license, please read license.txt included in the project repo.                                           //
 //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//
