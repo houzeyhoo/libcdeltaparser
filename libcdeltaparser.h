@@ -1,6 +1,6 @@
 //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//
-// libcdeltaparser, copyright (c) 2021 houz                                                                   //
-// A parser-library for Growtopia's items.dat, written fully in C & embeddable in C/C++ code.                   //                                                                                    //
+// libcdeltaparser, copyright (c) 2021 houz                                                              	    //
+// A parser-library for Growtopia's items.dat, written fully in C & embeddable in C/C++ code.                   //
 // For license, please read license.txt included in the project repo.                                           //
 //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//
 
@@ -58,8 +58,9 @@ struct item
     int bg_col;
     int fg_col;
 
-    // This value is always zero and its purpose is unknown.
-    int unknown;
+    // These two seed values are always zero and they're unused.
+    short seed1;
+    short seed2;
 
     int bloom_time;
 
@@ -230,7 +231,8 @@ static inline int parse_itemsdat(FILE* f, struct itemsdat* itemsdat)
         _read_byte(buf, &buf_pos, &item.tree_over);
         _read_int32(buf, &buf_pos, &item.bg_col);
         _read_int32(buf, &buf_pos, &item.fg_col);
-        _read_int32(buf, &buf_pos, &item.unknown);
+        _read_short(buf, &buf_pos, &item.seed1);
+        _read_short(buf, &buf_pos, &item.seed2);
         _read_int32(buf, &buf_pos, &item.bloom_time);
 
         if (itemsdat->version >= 7)
