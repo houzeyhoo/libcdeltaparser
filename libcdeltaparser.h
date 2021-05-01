@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define _ITEMSDAT_MAX_VERSION 12 // Maximum items.dat version supported by this parser
+#define _ITEMSDAT_MAX_VERSION 13 // Maximum items.dat version supported by this parser
 #define _ITEMSDAT_SECRET_LEN 16  // Length of the secret string used for name decryption
 
 // POD item object
@@ -164,7 +164,7 @@ static inline int parse_itemsdat(FILE* f, struct itemsdat* itemsdat)
     unsigned int file_size = ftell(f);
     fseek(f, 0, SEEK_SET);
 
-    char* buf = malloc(file_size);
+    char* buf = (char*)malloc(file_size);
     unsigned int buf_pos = 0;
     fread(buf, 1, file_size, f);
 
@@ -265,7 +265,11 @@ static inline int parse_itemsdat(FILE* f, struct itemsdat* itemsdat)
         {
             buf_pos += 13; //skip more useless data
         }
-
+		if (itemsdat->version >= 13)
+		{
+			buf_pos += 4;
+		}
+		
         itemsdat->items[i] = item;
     }
     free(buf);
